@@ -1,0 +1,576 @@
+[
+ {
+  "id": "R1 urban first tier starts at 5",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "FineTier(6, 10, 2_000, 0)",
+  "new": "FineTier(5, 10, 2_000, 0)"
+ },
+ {
+  "id": "R2 rural tier gap",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "FineTier(26, 30, 8_000, 0)",
+  "new": "FineTier(26, 29, 8_000, 0)"
+ },
+ {
+  "id": "R3 wrong amount",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "FineTier(36, 45, 15_000, 0)",
+  "new": "FineTier(36, 45, 14_000, 0)"
+ },
+ {
+  "id": "R4 wrong suspension",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "FineTier(61, 70, 25_000, 60)",
+  "new": "FineTier(61, 70, 25_000, 30)"
+ },
+ {
+  "id": "R5 truck motorway limit",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "\"kamyon\": (50, 80, 85, 90)",
+  "new": "\"kamyon\": (50, 80, 85, 95)"
+ },
+ {
+  "id": "R6 panelvan divided road",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "\"panelvan\": (50, 85, 100, 110)",
+  "new": "\"panelvan\": (50, 85, 110, 110)"
+ },
+ {
+  "id": "R7 urban uses rural tiers",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "return URBAN_TIERS if road == URBAN_ROAD else RURAL_TIERS",
+  "new": "return RURAL_TIERS"
+ },
+ {
+  "id": "R8 lower bound exclusive",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "if excess >= tier.min_excess and",
+  "new": "if excess > tier.min_excess and"
+ },
+ {
+  "id": "R9 upper bound exclusive",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "excess <= tier.max_excess)",
+  "new": "excess < tier.max_excess)"
+ },
+ {
+  "id": "R10 bool accepted",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "if isinstance(measured_kmh, bool) or not isinstance(measured_kmh, numbers.Integral):",
+  "new": "if not isinstance(measured_kmh, numbers.Integral):"
+ },
+ {
+  "id": "R11 zero speed accepted",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "if not 1 <= measured_kmh <= MAX_PLAUSIBLE_SPEED:",
+  "new": "if not 0 <= measured_kmh <= MAX_PLAUSIBLE_SPEED:"
+ },
+ {
+  "id": "R12 discount inverted",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "round(fine_tl * (1 - EARLY_PAYMENT_DISCOUNT))",
+  "new": "round(fine_tl * EARLY_PAYMENT_DISCOUNT)"
+ },
+ {
+  "id": "R13 negative fine accepted",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "if fine_tl < 0:",
+  "new": "if fine_tl < -1:"
+ },
+ {
+  "id": "R14 limit column shifted",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "SPEED_LIMITS[vehicle][ROAD_TYPES.index(road)]",
+  "new": "SPEED_LIMITS[vehicle][ROAD_TYPES.index(road) - 1]"
+ },
+ {
+  "id": "R15 vehicle not validated",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "    _check_choice(vehicle, VEHICLE_TYPES, \"vehicle\")",
+  "new": "    pass"
+ },
+ {
+  "id": "R16 label without umlaut",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "\"minibus\": \"Minibüs\"",
+  "new": "\"minibus\": \"Minibus\""
+ },
+ {
+  "id": "R17 numpy ints rejected",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "not isinstance(measured_kmh, numbers.Integral)",
+  "new": "not isinstance(measured_kmh, int)"
+ },
+ {
+  "id": "R19 numpy int kept as numpy",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "    measured_kmh = int(measured_kmh)",
+  "new": "    pass"
+ },
+ {
+  "id": "R18 top tier closed",
+  "lane": "fast",
+  "file": "speeding_fine/rules.py",
+  "old": "FineTier(66, None, 30_000, 90)",
+  "new": "FineTier(66, 200, 30_000, 90)"
+ },
+ {
+  "id": "D2 label from wrong speed",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "penalty = penalty_for(vehicle, road, speed)",
+  "new": "penalty = penalty_for(vehicle, road, speed - 1)"
+ },
+ {
+  "id": "D3 messy text only in vehicle",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "column = \"arac_tipi\" if position % 2 == 0 else \"yol_tipi\"",
+  "new": "column = \"arac_tipi\""
+ },
+ {
+  "id": "D4 duplicates of damaged rows",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "copies = dirty.loc[untouched[:DUPLICATE_ROWS]]",
+  "new": "copies = dirty.loc[picked[:DUPLICATE_ROWS]]"
+ },
+ {
+  "id": "D5 index kept",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "dirty = clean.reset_index(drop=True).copy()",
+  "new": "dirty = clean.copy()"
+ },
+ {
+  "id": "D11 seed not checked",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "    if isinstance(seed, bool) or not isinstance(seed, int):",
+  "new": "    if False:"
+ },
+ {
+  "id": "C1 README score stale",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "| %99,3 | %96,9 |",
+  "new": "| %99,3 | %97,0 |"
+ },
+ {
+  "id": "C2 README suspension wrong",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "| 46-55 | 51-60 | 20.000 TL | 30 gün |",
+  "new": "| 46-55 | 51-60 | 20.000 TL | 60 gün |"
+ },
+ {
+  "id": "C3 percent keeps ,0",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "return \"%\" + (text[:-2] if text.endswith(\".0\") else text).replace(\".\", \",\")",
+  "new": "return \"%\" + text.replace(\".\", \",\")"
+ },
+ {
+  "id": "D6 plausible 'impossible' speed",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "IMPOSSIBLE_SPEEDS = (-48, 0, 412)",
+  "new": "IMPOSSIBLE_SPEEDS = (-48, 0, 300)"
+ },
+ {
+  "id": "D7 size guard too loose",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "if len(clean) < damaged_count + DUPLICATE_ROWS:",
+  "new": "if len(clean) < damaged_count:"
+ },
+ {
+  "id": "D9 hour 24 possible",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "int(rng.integers(0, 24))",
+  "new": "int(rng.integers(0, 25))"
+ },
+ {
+  "id": "D10 empty table accepted",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": "if n_rows < 1:",
+  "new": "if n_rows < 0:"
+ },
+ {
+  "id": "F1 article number not glued",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "|(?<=\\bmd\\.) (?=\\d)",
+  "new": ""
+ },
+ {
+  "id": "F2 README fixed-row count stale",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "Düzeltilenler: 15 boş hava durumu",
+  "new": "Düzeltilenler: 14 boş hava durumu"
+ },
+ {
+  "id": "F3 README removed rows misspelled",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "3 imkânsız hız, 8 tekrar",
+  "new": "3 imkansız hız, 8 tekrar"
+ },
+ {
+  "id": "F4 control character in README",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "Ana ders: aynı",
+  "new": "Ana ders:\b aynı"
+ },
+ {
+  "id": "F5 long dash in README",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "Ana ders: aynı",
+  "new": "Ana ders \u2013 aynı"
+ },
+ {
+  "id": "F6 Turkish upper case lost",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "return text.replace(\"i\", \"İ\").replace(\"ı\", \"I\").upper()",
+  "new": "return text.upper()"
+ },
+ {
+  "id": "F7 warning kept on the answer line",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "answer.replace(\" Uyarı:\", \"\\nUyarı:\")",
+  "new": "answer"
+ },
+ {
+  "id": "F8 slide line too long",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "(f\"B'nin kanundan ayrıldığı {m['model_b_disagreements']} durumun hepsi\\n\"",
+  "new": "(f\"B'nin kanundan ayrıldığı {m['model_b_disagreements']} durumun hepsi eğitimde görmediği girdilerde\\n\""
+ },
+ {
+  "id": "F9 README distance claim loosened",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "en çok 2 km/s uzaklıkta",
+  "new": "en çok 3 km/s uzaklıkta"
+ },
+ {
+  "id": "G5 metadata left from template",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "    set_document_properties(deck)",
+  "new": "    pass"
+ },
+ {
+  "id": "G6 app.xml from template",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "    clean_package(path, len(deck.slides))",
+  "new": "    pass"
+ },
+ {
+  "id": "G7 4:3 size type kept",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "    deck._element.sldSz.attrib.pop(\"type\", None)",
+  "new": "    pass"
+ },
+ {
+  "id": "G8 README unseen agreement stale",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "çiftlerinde %89,7",
+  "new": "çiftlerinde %90,7"
+ },
+ {
+  "id": "G10 option lists not shortened",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "return [OPTION_LIST.sub(\" [...]\", line) for line in text.splitlines()]",
+  "new": "return text.splitlines()"
+ },
+ {
+  "id": "G13 README boundaries stale",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "18 kademe sınırından 13 tanesini",
+  "new": "18 kademe sınırından 14 tanesini"
+ },
+ {
+  "id": "N1 casing not fixed",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": ".str.strip().str.lower()",
+  "new": ".str.strip()"
+ },
+ {
+  "id": "N2 duplicates kept",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "clean = clean.drop_duplicates()",
+  "new": "clean = clean"
+ },
+ {
+  "id": "N3 impossible speeds kept",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "clean = clean[possible_speed].copy()",
+  "new": "clean = clean.copy()"
+ },
+ {
+  "id": "N6 no early payment discount",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "{tl_tr(rules.early_payment_amount(result['fine_tl']))}",
+  "new": "{tl_tr(result['fine_tl'])}"
+ },
+ {
+  "id": "N7 suspension sentence inverted",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "if result[\"suspension_days\"]:",
+  "new": "if not result[\"suspension_days\"]:"
+ },
+ {
+  "id": "N9 option 0 accepted",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "if answer.isdecimal() and 1 <= int(answer) <= len(keys):",
+  "new": "if answer.isdecimal() and 0 <= int(answer) <= len(keys):"
+ },
+ {
+  "id": "N10 speed upper bound dropped",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "return speed if 1 <= speed <= rules.MAX_PLAUSIBLE_SPEED else None",
+  "new": "return speed if 1 <= speed else None"
+ },
+ {
+  "id": "N11 EOF not handled",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "except (EOFError, NotImplementedError):",
+  "new": "except NotImplementedError:"
+ },
+ {
+  "id": "N14 no chdir after clone",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "    os.chdir(\"speeding-fine-predictor\")",
+  "new": "    pass"
+ },
+ {
+  "id": "N16 weather not filled",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "clean[\"hava\"] = clean[\"hava\"].fillna(\"bilinmiyor\")",
+  "new": "clean[\"hava\"] = clean[\"hava\"]"
+ },
+ {
+  "id": "N18 law check compares model to itself",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "(grid[\"model_b\"] == grid[\"law\"]).mean()",
+  "new": "(grid[\"model_b\"] == grid[\"model_b\"]).mean()"
+ },
+ {
+  "id": "N19 learning curve on one size",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "sizes = [300, 600, 1500, 3000, 6000]",
+  "new": "sizes = [600, 600, 600, 600, 600]"
+ },
+ {
+  "id": "N20 warning inverted",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "if (result[\"fine_tl\"], result[\"suspension_days\"]) != (law.fine_tl, law.suspension_days):",
+  "new": "if (result[\"fine_tl\"], result[\"suspension_days\"]) == (law.fine_tl, law.suspension_days):"
+ },
+ {
+  "id": "N21 Turkish names rejected",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "accepted = {normalise(key): key for key in keys} | {normalise(label): key for key, label in options.items()}",
+  "new": "accepted = {normalise(key): key for key in keys}"
+ },
+ {
+  "id": "N22 silent fallback",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "    print(f\"Üç denemede anlaşılamadı; {options[default]} seçildi.\")",
+  "new": "    pass"
+ },
+ {
+  "id": "N23 no Turkish letter folding",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "text.translate(TURKISH_TO_ASCII).lower()",
+  "new": "text.lower()"
+ },
+ {
+  "id": "N24 isdecimal to isdigit",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "    if not text.isdecimal():",
+  "new": "    if not text.isdigit():"
+ },
+ {
+  "id": "G1 unseen judged against test rows",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "isin(pd.MultiIndex.from_frame(X_eng_train))",
+  "new": "isin(pd.MultiIndex.from_frame(X_eng_test))"
+ },
+ {
+  "id": "G2 boundary needs one side only",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "if correct_at[(urban, start - 1)] and correct_at[(urban, start)]",
+  "new": "if correct_at[(urban, start)]"
+ },
+ {
+  "id": "G3 typed answers not shown",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "        print(prompt + answer)",
+  "new": "        pass"
+ },
+ {
+  "id": "G4 sample session uses the keyboard",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "(read or input)(",
+  "new": "input("
+ },
+ {
+  "id": "G9 seen agreement over every row",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "seen_agreement = (grid.loc[~unseen, \"model_b\"] == grid.loc[~unseen, \"law\"]).mean()",
+  "new": "seen_agreement = (grid[\"model_b\"] == grid[\"law\"]).mean()"
+ },
+ {
+  "id": "G11 disagreement count off by one",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "\"model_b_disagreements\": int(disagree.sum()),",
+  "new": "\"model_b_disagreements\": int(disagree.sum()) + 1,"
+ },
+ {
+  "id": "G12 suspension wording reverted",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "{result['suspension_days']} gün geri alınır.",
+  "new": "{result['suspension_days']} gün el konur."
+ },
+ {
+  "id": "F10 stale report PDF kept",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "pdf_path.unlink(missing_ok=True)",
+  "new": "pdf_path.exists()"
+ },
+ {
+  "id": "F11 half-written PDF accepted",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "endswith(b\"%%EOF\")",
+  "new": "endswith(b\"\")"
+ },
+ {
+  "id": "F12 unreadable PDF crashes the wait",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "        except OSError:",
+  "new": "        except FileNotFoundError:"
+ },
+ {
+  "id": "F13 Edge launcher not awaited",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "wait_for_pdf(pdf_path, timeout, poll)",
+  "new": "None"
+ },
+ {
+  "id": "F14 glue for iki yanında dropped",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "\"cevap anahtarı\", \"iki yanında\", ",
+  "new": "\"cevap anahtarı\", "
+ },
+ {
+  "id": "F15 number in parentheses not glued",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "|(?<=\\w) (?=\\(%?\\d)\"",
+  "new": "\""
+ },
+ {
+  "id": "F16 glue for boş hava durumu dropped",
+  "lane": "fast",
+  "file": "tools/build_deliverables.py",
+  "old": "\"boş hava durumu\", ",
+  "new": ""
+ },
+ {
+  "id": "G14 README limiter count stale",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "görülemeyecek hızda 34 kayıt var",
+  "new": "görülemeyecek hızda 43 kayıt var"
+ },
+ {
+  "id": "G15 README unseen series stale",
+  "lane": "fast",
+  "file": "README.md",
+  "old": "3.000 kayıtta %96,3",
+  "new": "3.000 kayıtta %97,3"
+ },
+ {
+  "id": "N25 fine start measured on speed",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "fine_start = clean.groupby([\"yerlesim_ici\", \"ceza_var\"])[\"asim_km\"]",
+  "new": "fine_start = clean.groupby([\"yerlesim_ici\", \"ceza_var\"])[\"olculen_hiz\"]"
+ },
+ {
+  "id": "N26 limiter count off",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "\"limiter_rows\": limiter_rows,",
+  "new": "\"limiter_rows\": limiter_rows + 1,"
+ },
+ {
+  "id": "N27 distinct inputs not deduplicated",
+  "lane": "notebook",
+  "file": "speeding_fine_prediction.ipynb",
+  "old": "distinct_inputs = len(grid[ENGINEERED].drop_duplicates())",
+  "new": "distinct_inputs = len(grid[ENGINEERED])"
+ }
+]

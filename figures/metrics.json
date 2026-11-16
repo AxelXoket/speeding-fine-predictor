@@ -1,0 +1,116 @@
+{
+  "rows_raw": 608,
+  "rows_clean": 591,
+  "missing_speed": 6,
+  "missing_weather": 15,
+  "duplicates": 8,
+  "train_rows": 443,
+  "test_rows": 148,
+  "grid_rows": 3388,
+  "models": {
+    "Model A (ham)": {
+      "train_accuracy": 1.0,
+      "test_accuracy": 0.8649,
+      "law_agreement": 0.763
+    },
+    "Model B (aşım)": {
+      "train_accuracy": 1.0,
+      "test_accuracy": 0.9932,
+      "law_agreement": 0.969
+    }
+  },
+  "model_b_mistakes": [
+    [
+      0,
+      31
+    ],
+    [
+      0,
+      49
+    ],
+    [
+      0,
+      50
+    ],
+    [
+      0,
+      71
+    ],
+    [
+      1,
+      46
+    ],
+    [
+      1,
+      66
+    ],
+    [
+      1,
+      67
+    ]
+  ],
+  "model_b_disagreements": 105,
+  "mistake_distance_max": 2,
+  "boundaries_total": 18,
+  "boundaries_found": 13,
+  "unseen_share": 0.3017,
+  "unseen_agreement": 0.8973,
+  "seen_agreement": 1.0,
+  "learning_curve": [
+    [
+      300,
+      0.9488,
+      0.8988,
+      0.9938
+    ],
+    [
+      600,
+      0.9845,
+      0.9587,
+      1.0
+    ],
+    [
+      1500,
+      0.9969,
+      0.9855,
+      1.0
+    ],
+    [
+      3000,
+      0.9983,
+      0.9917,
+      1.0
+    ],
+    [
+      6000,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "curve_seeds": 10,
+  "curve_unseen_share": [
+    0.3963,
+    0.2552,
+    0.1039,
+    0.0432,
+    0.0136
+  ],
+  "curve_unseen_agreement": [
+    0.8727,
+    0.9399,
+    0.972,
+    0.9633,
+    1.0
+  ],
+  "spelling_fixed": 12,
+  "limiter_rows": 34,
+  "examples": [
+    "Otomobil, yerleşim yeri içi (sınır 50 km/s), 54 km/s: Ceza almazsınız.",
+    "Otomobil, yerleşim yeri içi (sınır 50 km/s), 63 km/s: Ceza alırsınız. Tahminî ceza 4.000 TL; tebliğden sonra 1 ay içinde öderseniz 3.000 TL.",
+    "Panelvan, otoyol (sınır 110 km/s), 132 km/s: Ceza alırsınız. Tahminî ceza 6.000 TL; tebliğden sonra 1 ay içinde öderseniz 4.500 TL.",
+    "Otomobil, bölünmüş yol (sınır 110 km/s), 165 km/s: Ceza alırsınız. Tahminî ceza 20.000 TL; tebliğden sonra 1 ay içinde öderseniz 15.000 TL. Ehliyetiniz 30 gün geri alınır.",
+    "Motosiklet, şehirlerarası çift yönlü yol (sınır 80 km/s), 168 km/s: Ceza alırsınız. Tahminî ceza 30.000 TL; tebliğden sonra 1 ay içinde öderseniz 22.500 TL. Ehliyetiniz 90 gün geri alınır.",
+    "Otomobil, yerleşim yeri içi (sınır 50 km/s), 96 km/s: Ceza alırsınız. Tahminî ceza 15.000 TL; tebliğden sonra 1 ay içinde öderseniz 11.250 TL. Uyarı: kanun tablosuna göre ceza 20.000 TL ve 30 gün ehliyet geri alma; model bu kademe sınırının yakınında yanılıyor."
+  ]
+}

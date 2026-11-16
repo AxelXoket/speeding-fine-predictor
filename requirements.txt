@@ -1,0 +1,12 @@
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+matplotlib>=3.8
+# report and slide builder, and the tests that check their output
+python-pptx>=1.0
+pillow>=10.0
+pypdf>=4.0
+# notebook execution in the test lane
+nbformat>=5.9
+nbclient>=0.10
+ipykernel>=6.29
