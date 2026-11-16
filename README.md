@@ -77,7 +77,7 @@ Rapor (Edge ile PDF) ve sunum (Calibri ile satır genişliği ölçümü) Window
 
 - `tests/`: kanun ve yönetmelikten elle yazılmış senaryoları sınar (her kademe sınırının iki yanı, 7 araç × 4 yol). Ayrıca şunları denetler: hız 1'den 300 km/s'e çıkarken ceza hiç düşmüyor, hatalı girdiler reddediliyor, veri üreticisi aynı tohumla aynı tabloyu veriyor, bozulan satır sayıları tam bildirilen kadar, depodaki CSV üreticinin çıktısıyla bayt bayt aynı, README'deki sayılar ölçülenle aynı, sunumda kutusuna sığmayan satır yok ve hiçbir metin dosyasında kontrol karakteri ya da uzun tire yok.
 - `slow_tests/`: not defterinin kodu ne üretiyorsa onu sınar: temizlikten kalan satırlar, skorların kanuna karşı bağımsız yeniden sayımı, görülmemiş girdi ve kademe sınırı ölçümlerinin bağımsız yeniden sayımı, hataların kademe sınırlarına yakınlığı, kayıtlı örnek oturumun cevapları, öğrenme eğrisi, uygulamanın Türkçe adları ve hatalı girdileri nasıl karşıladığı, Colab'daki depo indirme yolu.
-- Testlerin gerçekten koruyup korumadığını `tools/mutation_check.py` ölçer: kuralları, veri üreticisini, rapor ve sunum üreticisini, README'yi ve not defterini tek tek bozan 82 değişikliğin hepsini testler yakalıyor. Betik projeyi geçici bir kopyaya alır, çalışma klasörüne dokunmaz. Bozmaların listesi `tools/mutants.json` dosyasında; hızlı testler bu listenin güncel kaldığını denetler.
+- Testlerin gerçekten koruyup korumadığını `tools/mutation_check.py` ölçer: kuralları, veri üreticisini, rapor ve sunum üreticisini, README'yi ve not defterini tek tek bozan 83 değişikliğin hepsini testler yakalıyor. Betik projeyi geçici bir kopyaya alır, çalışma klasörüne dokunmaz. Bozmaların listesi `tools/mutants.json` dosyasında; hızlı testler bu listenin güncel kaldığını denetler.
 
 ## Proje yapısı
 

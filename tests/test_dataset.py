@@ -138,6 +138,13 @@ class CsvFile(unittest.TestCase):
             fresh = dataset.build_csv(pathlib.Path(folder) / "records.csv")
             self.assertEqual(fresh.read_bytes(), dataset.DEFAULT_CSV.read_bytes())
 
+    def test_the_csv_has_lf_line_endings_on_every_system(self):
+        with tempfile.TemporaryDirectory() as folder:
+            fresh = dataset.build_csv(pathlib.Path(folder) / "records.csv").read_bytes()
+        self.assertGreater(fresh.count(b"\n"), len(DIRTY))
+        self.assertNotIn(b"\r", fresh)
+        self.assertNotIn(b"\r", dataset.DEFAULT_CSV.read_bytes())
+
     def test_csv_round_trip_keeps_values_and_blanks(self):
         loaded = pd.read_csv(dataset.DEFAULT_CSV)
         self.assertEqual(tuple(loaded.columns), dataset.COLUMNS)

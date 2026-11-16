@@ -144,7 +144,8 @@ def add_dirty_rows(clean: pd.DataFrame, seed: int = DEFAULT_SEED) -> pd.DataFram
 def build_csv(path: pathlib.Path = DEFAULT_CSV, n_rows: int = DEFAULT_ROWS, seed: int = DEFAULT_SEED) -> pathlib.Path:
     """Write the damaged table to path and return the path."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    add_dirty_rows(generate_records(n_rows, seed), seed).to_csv(path, index=False, encoding="utf-8")
+    # LF on every system, so the committed file and a fresh build match byte for byte on Windows too
+    add_dirty_rows(generate_records(n_rows, seed), seed).to_csv(path, index=False, encoding="utf-8", lineterminator="\n")
     return path
 
 

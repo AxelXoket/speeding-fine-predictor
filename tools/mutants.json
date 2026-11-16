@@ -572,5 +572,12 @@
   "file": "speeding_fine_prediction.ipynb",
   "old": "distinct_inputs = len(grid[ENGINEERED].drop_duplicates())",
   "new": "distinct_inputs = len(grid[ENGINEERED])"
+ },
+ {
+  "id": "D12 csv line ending follows the system",
+  "lane": "fast",
+  "file": "speeding_fine/dataset.py",
+  "old": ", lineterminator=\"\\n\")",
+  "new": ")"
  }
 ]
